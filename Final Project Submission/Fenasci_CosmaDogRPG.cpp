@@ -2,19 +2,29 @@
 
 using namespace std;
 
+//++PROF+ANDREW:    please put a description of what each of these will be doing
 void whereto();
+
+//++PROF+ANDREW:    when you go to one of these, do you have anything like "hit points"
+// or energy or weapons that you bring?
+// add a parameter to each function saying which character you are
+// maybe add a parameter for weapon also
+// add a parameter for player's current health
 void intracoastalclub();
 void gasagasa();
 void southside();
 
-
+//++PROF+ANDREW:    you probably won't want these variables, at least not as global variables
 int input;
 int name;
 
+//++PROF+ANDREW:    suggestions:
+// constant int values for character ID
+// corresponding constant string values for the character name
 
 int main ()
 {
-  system ("cls");
+  system ("cls"); //++PROF+ANDREW:    use "clear_the_screen.cpp"
   cout << "Welcome to Cosma Dog" << endl;
   cout << "\n1. Enter" << endl;
   cout << "\n2. Exit" << endl;
@@ -36,20 +46,21 @@ int main ()
       cout << "\nPick your character: " << endl;
       cout << "\n1. Isaac Derr" << endl;
       cout << "\n2. Alli KB" << endl;
+      //++PROF+ANDREW:    cout << "\n" << ALLI_CHAR_NUMBER << ". " << ALLI_CHARACTER_NAME << endl;
       cout << "\n3. Katy Fenasci" << endl;
       cout <<"\n" << endl;
       cin >> name;
 
       //How do I get it to say You have chosen name at the end?
 
-      whereto();
-
+      whereto();//++PROF+ANDREW:    pass in the character stuff
+//++PROF+ANDREW:    break;
     case 2:
       exit(0);
   }
 }
 
-void whereto()
+void whereto() //++PROF+ANDREW:    this is your main game play - it's a "turn"
 {
   system ("cls");
   cout << "\nWhere do you want to go?" << endl;
@@ -58,12 +69,14 @@ void whereto()
   cout << "\n3. Southside Arts Center" << endl;
   cout << "\n" << endl;
   cin >> input;
+  //++PROF+ANDREW:
 
   switch (input)
   {
     case 1:
     intracoastalclub();
-
+    //++PROF+ANDREW:    need "break"
+    break;
     case 2:
     gasagasa();
 
@@ -72,10 +85,13 @@ void whereto()
   }
 }
 
+//++PROF+ANDREW:    suggest a function for "fight"
+
 void intracoastalclub()
 {
   system ("cls");
   cout << "\nAt the Intracoastal Club, you find Drain Bamage Benny with your bass!" << endl;
+
 }
 
 void gasagasa()
