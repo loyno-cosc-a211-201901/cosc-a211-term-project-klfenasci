@@ -96,7 +96,8 @@ void intracoastalclub()
 
   turn = rand() % 2;
 
-  if (turn == 1) {
+  if (turn == 1)
+  {
       clear_the_screen();
       cout << "\nDrain Bamage Benny goes first." << endl;
       cout << "\n ";
@@ -109,10 +110,12 @@ void intracoastalclub()
       cout << "\nDrain Bamage Benny attacks you for " << bDamage << " damage!" << endl;
       cout << "\n ";
       system("pause");
+    }
 
-  }
+    fight(pHealth, bHealth);
 
-  else {
+  else
+  {
       clear_the_screen();
       cout << "\n You have the first turn." << endl;
       cout << "\n ";
@@ -131,35 +134,50 @@ void fight(int &pHealth, int &bHealth)
   pDamage = rand() % 10 + 10;
   bDamage = rand() % 5 + 10;
 
-  bHealth = bHealth - pDamage;
-
   cout << "\n Your health: " << pHealth << endl;
   cout << "\n Drain Bamage Benny's health:  " << bHealth << endl;
-  system ("pause");
+  cout << "\nWhat do you want to do?" << endl;
+  cout << "\n1. Attack!" << endl;
+  cout << "\n2. Flee!" << endl;
+  cin << input;
+  switch (input)
+  {
 
-  cout << "\n You attack Drain Bamage Benny for " << bDamage << " damage!" << endl;
-  cout << "\n ";
-  system("pause");
-
-  if (bHealth < 1) {
-    cout << "\n You have killed Drain Bamage Benny!" << endl;
+    case 1:
+    bHealth = bHealth - pDamage;
+    cout << "\n You attack Drain Bamage Benny for " << bDamage << " damage!" << endl;
     cout << "\n ";
     system("pause");
-    youWin();
+
+    if (bHealth < 1)
+    {
+      cout << "\n You have killed Drain Bamage Benny!" << endl;
+      cout << "\n ";
+      system("pause");
+      youWin();
+    }
 
     pHealth = pHealth - bDamage;
     cout << "\n Drain Bamage Benny attacks you for " << bDamage << " damage!" << endl;
     cout << "\n ";
     system("pause");
 
-    if (pHealth < 1) {
+    if (pHealth < 1)
+    {
       cout << "\n You have been killed by Drain Bamage Benny!" << endl;
       cout << "\n ";
       system("pause");
       exit(0);
     }
+
   fight(pHealth, bHealth);
 
+  case 2:
+  clear_the_screen();
+  cout << "You can't flee Drain Bamage Benny!" << endl;
+  system("pause");
+
+  fight(pHealth, bHealth);
 }
 
 void youWin()
