@@ -2,13 +2,16 @@ C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Sub
 C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp:122:25: error: too many arguments to function 'void fight()'
    fight(pHealth, bHealth);
                          ^
-C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp:22:6: note: declared here
+C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp:21:6: note: declared here
  void fight();
       ^~~~~
 C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp: In function 'void fight(int&, int&)':
-C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp:129:23: error: 'pDamage' was not declared in this scope
-   bHealth = bHealth - pDamage;
-                       ^~~~~~~
-C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp:135:54: error: 'bDamage' was not declared in this scope
-   cout << "\n You attack Drain Bamage Benny for " << bDamage << " damage!" << endl;
-                                                      ^~~~~~~
+C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp:162:1: error: a function-definition is not allowed here before '{' token
+ {
+ ^
+C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp:166:1: error: expected '}' at end of input
+ }
+ ^
+C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\Final Project Submission\Fenasci_CosmaDogRPG.cpp:127:1: note: to match this '{'
+ {
+ ^

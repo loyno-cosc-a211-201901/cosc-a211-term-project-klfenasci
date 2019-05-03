@@ -17,9 +17,9 @@ void clear_the_screen () {
 
 //++PROF+ANDREW:    please put a description of what each of these will be doing
 void whereto();
-
 void intracoastalclub();
 void fight();
+void youWin();
 
 int name;
 int input;
@@ -125,11 +125,16 @@ void intracoastalclub()
 
 void fight(int &pHealth, int &bHealth)
 {
+  int pDamage;
+  int bDamage;
+
+  pDamage = rand() % 10 + 10;
+  bDamage = rand() % 5 + 10;
 
   bHealth = bHealth - pDamage;
 
   cout << "\n Your health: " << pHealth << endl;
-  cout << "\n Thief's health:  " << bHealth << endl;
+  cout << "\n Drain Bamage Benny's health:  " << bHealth << endl;
   system ("pause");
 
   cout << "\n You attack Drain Bamage Benny for " << bDamage << " damage!" << endl;
@@ -137,9 +142,10 @@ void fight(int &pHealth, int &bHealth)
   system("pause");
 
   if (bHealth < 1) {
-    cout << "\n You have killed the thief!" << endl;
+    cout << "\n You have killed Drain Bamage Benny!" << endl;
     cout << "\n ";
     system("pause");
+    youWin();
 
     pHealth = pHealth - bDamage;
     cout << "\n Drain Bamage Benny attacks you for " << bDamage << " damage!" << endl;
@@ -147,12 +153,18 @@ void fight(int &pHealth, int &bHealth)
     system("pause");
 
     if (pHealth < 1) {
-      cout << "\n You have been killed by the thief!" << endl;
+      cout << "\n You have been killed by Drain Bamage Benny!" << endl;
       cout << "\n ";
       system("pause");
       exit(0);
     }
   fight(pHealth, bHealth);
-          }
 
+}
+
+void youWin()
+{
+  cout << "\nYou have saved all the gear! Congratulations!" << endl;
+  cout << "\nThank you for playing Cosma Dog Quest!" << endl;
+  exit(0);
 }
