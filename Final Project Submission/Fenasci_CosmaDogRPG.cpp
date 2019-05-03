@@ -2,21 +2,27 @@
 
 using namespace std;
 
+#ifdef _WIN32
+#include <windows.h>
+const char *CLEAR_SCREEN_COMMAND = "CLS";
+#elif defined (__APPLE__)
+const char *CLEAR_SCREEN_COMMAND = "clear";
+#elif defined (__linux__)
+const char *CLEAR_SCREEN_COMMAND = "clear";
+#endif
+
+void clear_the_screen () {
+   system (CLEAR_SCREEN_COMMAND);
+}
+
 //++PROF+ANDREW:    please put a description of what each of these will be doing
 void whereto();
 
-//++PROF+ANDREW:    when you go to one of these, do you have anything like "hit points"
-// or energy or weapons that you bring?
-// add a parameter to each function saying which character you are
-// maybe add a parameter for weapon also
-// add a parameter for player's current health
 void intracoastalclub();
-void gasagasa();
-void southside();
+void fight();
 
-//++PROF+ANDREW:    you probably won't want these variables, at least not as global variables
-int input;
 int name;
+int input;
 
 //++PROF+ANDREW:    suggestions:
 // constant int values for character ID
@@ -24,8 +30,9 @@ int name;
 
 int main ()
 {
-  system ("cls"); //++PROF+ANDREW:    use "clear_the_screen.cpp"
-  cout << "Welcome to Cosma Dog" << endl;
+
+  clear_the_screen(); //++PROF+ANDREW:    use "clear_the_screen.cpp"
+  cout << "Welcome to the Cosma Dog Quest" << endl;
   cout << "\n1. Enter" << endl;
   cout << "\n2. Exit" << endl;
   cout << "\n" << endl;
@@ -34,74 +41,118 @@ int main ()
   switch (input)
   {
     case 1:
-    system ("cls");
+    clear_the_screen();
       cout << "\nYou have to get to the gig on time but oh no! Your gear has been stolen. You need to get it back if the show is to go on." << endl;
-      cout << "\nBut first..." << endl;
+      cout << "\nYou are Isaac Derr, trusty singer and guitarist of Cosma Dog. With only a broken beer bottle as a weapon, you set out to get your band's gear back." << endl;
       cout << "\n" << endl;
       system ("pause");
 
+      whereto();
+      break;
 
-
-      system ("cls");
-      cout << "\nPick your character: " << endl;
-      cout << "\n1. Isaac Derr" << endl;
-      cout << "\n2. Alli KB" << endl;
-      //++PROF+ANDREW:    cout << "\n" << ALLI_CHAR_NUMBER << ". " << ALLI_CHARACTER_NAME << endl;
-      cout << "\n3. Katy Fenasci" << endl;
-      cout <<"\n" << endl;
-      cin >> name;
-
-      //How do I get it to say You have chosen name at the end?
-
-      whereto();//++PROF+ANDREW:    pass in the character stuff
-//++PROF+ANDREW:    break;
     case 2:
       exit(0);
+      break;
   }
 }
 
 void whereto() //++PROF+ANDREW:    this is your main game play - it's a "turn"
 {
-  system ("cls");
+  clear_the_screen();
   cout << "\nWhere do you want to go?" << endl;
   cout << "\n1. Intracoastal Club" << endl;
-  cout << "\n2. Gasa Gasa" << endl;
-  cout << "\n3. Southside Arts Center" << endl;
+  cout << "\n2. Exit" << endl;
   cout << "\n" << endl;
   cin >> input;
-  //++PROF+ANDREW:
 
   switch (input)
   {
     case 1:
-    intracoastalclub();
-    //++PROF+ANDREW:    need "break"
-    break;
-    case 2:
-    gasagasa();
+      intracoastalclub();
+      break;
 
-    case 3:
-    southside();
+    case 2:
+      exit(0);
+      break;
+
   }
 }
 
-//++PROF+ANDREW:    suggest a function for "fight"
-
 void intracoastalclub()
 {
-  system ("cls");
+  int pHealth;
+  int bHealth;
+  int pDamage;
+  int bDamage;
+  int turn;
+
+  clear_the_screen();
   cout << "\nAt the Intracoastal Club, you find Drain Bamage Benny with your bass!" << endl;
+  cout << "\nYou prepare to fight him!" << endl;
+  system("pause");
+
+  pHealth = rand() % 40 + 80;
+  bHealth = rand() % 20 + 40;
+
+  turn = rand() % 2;
+
+  if (turn == 1) {
+      clear_the_screen();
+      cout << "\nDrain Bamage Benny goes first." << endl;
+      cout << "\n ";
+      system("pause");
+
+      bDamage = rand() % 5 + 10;
+
+      pHealth = pHealth - bDamage;
+      clear_the_screen();
+      cout << "\nDrain Bamage Benny attacks you for " << bDamage << " damage!" << endl;
+      cout << "\n ";
+      system("pause");
+
+  }
+
+  else {
+      clear_the_screen();
+      cout << "\n You have the first turn." << endl;
+      cout << "\n ";
+      system("pause");
+  }
+
+  fight(pHealth, bHealth);
 
 }
 
-void gasagasa()
+void fight(int &pHealth, int &bHealth)
 {
-  system ("cls");
-  cout << "\nAt Gasa Gasa, you find Get Your Gun Annie with your guitar!" << endl;
-}
 
-void southside()
-{
-  system ("cls");
-  cout << "\nAt Southside Art's Center, you find Drunk and Reeling Raymond with your drums!" << endl;
+  bHealth = bHealth - pDamage;
+
+  cout << "\n Your health: " << pHealth << endl;
+  cout << "\n Thief's health:  " << bHealth << endl;
+  system ("pause");
+
+  cout << "\n You attack Drain Bamage Benny for " << bDamage << " damage!" << endl;
+  cout << "\n ";
+  system("pause");
+
+  if (bHealth < 1) {
+    cout << "\n You have killed the thief!" << endl;
+    cout << "\n ";
+    system("pause");
+
+    pHealth = pHealth - bDamage;
+    cout << "\n Drain Bamage Benny attacks you for " << bDamage << " damage!" << endl;
+    cout << "\n ";
+    system("pause");
+
+    if (pHealth < 1) {
+      cout << "\n You have been killed by the thief!" << endl;
+      cout << "\n ";
+      system("pause");
+      exit(0);
+    }
+  fight(pHealth, bHealth);
+          }
+
 }
