@@ -1,4 +1,0 @@
-C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\fighttest.cpp: In function 'int main()':
-C:\Users\ash\Documents\GitHub\cosc-a211-term-project-klfenasci\fighttest.cpp:40:13: error: 'attackThief' was not declared in this scope
-             attackThief(pHealth, bHealth);
-             ^~~~~~~~~~~
